@@ -1,38 +1,41 @@
 import styled from "styled-components";
+import BackgroundImg from "../../assets/background.png";
 
-export const SummaryContainer = styled.header`
+export const Container = styled.div`
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  padding-bottom: 13rem;
+`;
+
+export const BackgroundHeader = styled.div`
+  height: 296px;
+  width: 100%;
+  background-image: url(${BackgroundImg});
+  background-position: center;
+  background-size: cover;
+`;
+
+export const SummaryBlogDetails = styled.div`
   background-color: ${(props) => props.theme["base-profile"]};
   padding: 2rem 2.5rem;
   border-radius: 10px;
   margin-top: -6.5rem;
   display: flex;
-  gap: 2rem;
-`;
-
-export const SummaryInfoContainer = styled.div`
-  display: flex;
   flex-direction: column;
-  flex: 1;
-`;
 
-export const Avatar = styled.img`
-  border-radius: 8px;
-  width: 148px;
-  height: 148px;
-`;
-
-export const SummaryInfoHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-
-  span {
-    font-size: 2rem;
-    color: ${(props) => props.theme["base-title"]};
-    font-weight: bold;
-    line-height: 130%;
+  h1 {
+    font-size: 1.5rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
   }
+`;
+
+export const SummaryLinks = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 
   a {
     color: ${(props) => props.theme["blue"]};
@@ -53,11 +56,14 @@ export const SummaryInfoHeader = styled.div`
 export const SummaryIcons = styled.div`
   display: flex;
   gap: 2rem;
-  margin-top: 2rem;
   span {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     color: ${(props) => props.theme["base-subtitle"]};
   }
+`;
+
+export const PostContent = styled.section`
+  padding: 2.5rem 2rem;
 `;

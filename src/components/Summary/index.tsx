@@ -27,7 +27,6 @@ interface UserDataProps {
 
 export function Summary() {
   const [userData, setUserData] = useState<UserDataProps | null>(null);
-  console.log(userData, "userData");
 
   async function fetchUserData() {
     try {

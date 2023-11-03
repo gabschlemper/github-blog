@@ -22,4 +22,9 @@ export const GlobalStyle = createGlobalStyle`
   body, input, text-area, button {
     font: 400 1rem Nunito, sans-serif;
   }
+
+  span {
+    color: ${(props) => props.theme["base-span"]};
+    font-size: 0.875rem;
+  }
   `;

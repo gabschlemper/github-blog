@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { githubIssuesApi, githubSearchApi } from "../lib/axios";
+import { githubSearchApi } from "../lib/axios";
 
 interface BlogDataProps {
   id: number;
@@ -9,9 +9,8 @@ interface BlogDataProps {
   html_url: string;
   number: number;
 }
-
 interface BlogContextType {
-  filterBlogData: (query?: string) => Promise<void>;
+  fetchBlogData: (query?: string) => Promise<void>;
   blogData: BlogDataProps[];
 }
 
@@ -27,34 +26,20 @@ export function BlogProvider({ children }: BlogProviderProps) {
   const owner = "gabschlemper";
   const repo = "github-blog";
 
-  async function filterBlogData(query?: string) {
+  async function fetchBlogData(query: string = "") {
     const response = await githubSearchApi.get(
-      `https://api.github.com/search/issues?q=${"javascript"}%20repo:gabschlemper/github-blog`,
-      {
-        params: {
-          q: query,
-        },
-      }
+      `/search/issues?q=${encodeURIComponent(query)}+repo:${owner}/${repo}`
     );
-    console.log(response.data);
+    setBlogData(response.data.items);
   }
-
-  async function fetchBlogData(query?: string) {
-    const response = await githubIssuesApi.get(`/${owner}/${repo}/issues`, {
-      params: {
-        q: query,
-      },
-    });
-    setBlogData(response.data);
-  }
+  // }
 
   useEffect(() => {
     fetchBlogData();
-    filterBlogData();
   }, []);
 
   return (
-    <BlogContext.Provider value={{ blogData, filterBlogData }}>
+    <BlogContext.Provider value={{ blogData, fetchBlogData }}>
       {children}
     </BlogContext.Provider>
   );

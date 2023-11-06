@@ -9,5 +9,5 @@ export const githubIssuesApi = axios.create({
 });
 
 export const githubSearchApi = axios.create({
-  baseURL: "https://api.github.com/search/issues",
+  baseURL: "https://api.github.com",
 });

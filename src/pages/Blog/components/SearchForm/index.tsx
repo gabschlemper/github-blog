@@ -12,22 +12,21 @@ const searchFormSchema = z.object({
 type SearchFormInputs = z.infer<typeof searchFormSchema>;
 
 export const SearchForm = () => {
-  const { filterBlogData } = useContext(BlogContext);
+  const { fetchBlogData, blogData } = useContext(BlogContext);
 
   const { register, handleSubmit, control } = useForm<SearchFormInputs>({
     resolver: zodResolver(searchFormSchema),
   });
 
-  async function handleSearchForm(data: SearchFormInputs) {
-    await filterBlogData(data.query);
-    console.log("oq ta vindo aqui", data);
-  }
+  const handleSearchForm = ({ query }: any) => {
+    fetchBlogData(query);
+  };
 
   return (
     <SearchFormContainer onSubmit={handleSubmit(handleSearchForm)}>
       <div>
         <p>Publicações</p>
-        <span>6 Publicações</span>
+        <span>{blogData.length} Publicações</span>
       </div>
 
       <Controller

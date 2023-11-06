@@ -35,10 +35,9 @@ export const Posts = styled(Link)`
   height: 260px;
   text-decoration: none;
   color: ${(props) => props.theme["base-text"]};
-  transition: transform 0.2s;
+  transition: opacity 0.2s;
   &:hover {
-    transform: scale(1.03);
-    opacity: 0.8;
+    opacity: 0.7;
   }
 
   h1 {
@@ -62,6 +61,5 @@ export const Posts = styled(Link)`
 export const Title = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
   gap: 1.5rem;
 `;

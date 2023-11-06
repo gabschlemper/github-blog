@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import BackgroundImg from "../../assets/background.png";
+import ReactMarkdown from "react-markdown";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 export const Container = styled.div`
   width: 100%;
@@ -66,4 +68,32 @@ export const SummaryIcons = styled.div`
 
 export const PostContent = styled.section`
   padding: 2.5rem 2rem;
+`;
+
+export const MarkdownStyle = styled(ReactMarkdown)`
+  p {
+    margin: 0.5rem 0;
+  }
+
+  li {
+    list-style-position: inside;
+    color: ${(props) => props.theme["base-text"]};
+    margin: 0.5rem 0;
+  }
+
+  ul li p,
+  ol li p {
+    display: inline;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 1rem 0;
+  }
+`;
+
+export const CodeBlock = styled(SyntaxHighlighter)`
+  background-color: ${(props) => props.theme["base-profile"]} !important;
 `;

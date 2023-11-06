@@ -34,7 +34,7 @@ type BlogDetailsProps = {
   user: userDetails;
 };
 
-function renderCodeBlock({ children }: { children: string }) {
+function renderCodeBlock({ children }: any) {
   return (
     <CodeBlock language="javascript" style={darcula}>
       {children}
